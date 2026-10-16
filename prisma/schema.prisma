@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id            String   @id @default(uuid())
+  employeeId    String   @unique
+  firstName     String
+  lastName      String
+  email         String   @unique
+  phone         String?
+  department    String
+  designation   String
+  country       String
+  city          String?
+  salary        Float
+  currency      String   @default("INR")
+  dateOfJoining DateTime
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([department])
+  @@index([country])
+  @@index([currency])
+  @@index([firstName, lastName])
+  @@index([email])
+  @@index([department, country])
+  @@index([salary])
+  @@index([department, salary])
+}
+
+model PaymentHistory {
+  id            String   @id @default(uuid())
+  employeeId    String
+  amount        Float
+  paymentMonth  String   // e.g. "2026-10"
+  paymentDate   DateTime
+  paymentMethod String   // "Bank Transfer", "Cheque", "UPI", "Cash"
+  status        String   // "Paid", "Pending", "Failed"
+  remarks       String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([employeeId])
+  @@index([paymentMonth])
+  @@index([status])
+  @@index([paymentDate])
+  @@index([employeeId, paymentMonth])
+}
