@@ -12,6 +12,7 @@ A web-based Employee Salary Management System for an organisation with 10,000 em
 |---|---|
 | [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) | Goal, scope, features, deliberate exclusions, acceptance criteria |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | System diagram, data model, API design, performance decisions, trade-offs |
+| [`docs/AI_UTILIZATION.md`](docs/AI_UTILIZATION.md) | Comprehensive report on how AI was utilized throughout the development lifecycle |
 
 ---
 
